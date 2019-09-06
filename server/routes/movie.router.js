@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
     // query database to join movies and genres tables
     
     const queryText = `SELECT * FROM "movies"
-    // JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
-    // JOIN "genres" ON "movies_genres".genres_id = "genres".id
-    // ORDER BY "movies".title ASC;`;
+        JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
+        JOIN "genres" ON "movies_genres".genres_id = "genres".id
+        ORDER BY "movies".title ASC;`;
 
     pool.query(queryText)
         .then((result) => {
-            console.log('GET from DB ', result);
+            console.log('GET from DB ', result.rows);
             // sends database information back to client in array
             res.send(result.rows)
         })
