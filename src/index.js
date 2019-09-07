@@ -25,10 +25,21 @@ function* getMovies() {
         console.log('Error in GET ', err);
     }
 }
+// Saga to GET genres with movies
+function* getGenres() {
+    try {
+        const response = yield axios.get('/movie/genres');
+        yield put({type: 'SET_GENRES', payload: response.data})
+    }
+    catch(err) {
+        console.log('Error in GET ', err);
+    }
+}
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
+    yield takeEvery('GET_GENRES', getGenres);
 }
 
 // Create sagaMiddleware

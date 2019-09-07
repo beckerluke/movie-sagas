@@ -10,11 +10,15 @@ class MovieListPage extends Component {
   // Renders the entire list of movies and posters from Database
   
   componentDidMount() {
+    // dispatch to SAGAS to initiate axios GET request and retrieve movies and genres data from db and store in reducers
     this.props.dispatch({type: 'GET_MOVIES'});
+    this.props.dispatch({type: 'GET_GENRES'});
   }
 
   render() {
     console.log(this.props.reduxState.movies);
+    console.log(this.props.reduxState.genres);
+    
     // array of movie objects from database in movies reducer
     // const movieListArray = this.props.reduxState.movies.map((movieItem, index) => {
     //   return (
