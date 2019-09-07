@@ -11,7 +11,7 @@ class MovieItem extends Component {
   posterClick = (event) => {
     console.log(this.props.movieItem);
     
-    this.props.history.push('/details/'+this.props.movieItem.movies_id);
+    this.props.history.push('/details/'+this.props.movieItem.id);
   }
   
   render() {

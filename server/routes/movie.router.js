@@ -12,10 +12,7 @@ router.get('/', (req, res) => {
     //     JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
     //     JOIN "genres" ON "movies_genres".genres_id = "genres".id
     //     ORDER BY "movies".title ASC;`;
-    const queryText = `SELECT * FROM "movies"
-           JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
-           JOIN "genres" ON "movies_genres".genres_id = "genres".id
-           ORDER BY "movies".title ASC;`;
+    const queryText = `SELECT * FROM "movies";`;
 
     pool.query(queryText)
         .then((result) => {

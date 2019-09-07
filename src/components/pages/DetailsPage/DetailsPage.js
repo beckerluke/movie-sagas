@@ -11,7 +11,7 @@ function DetailsPage(props) {
 
   // Filters array of movie data objects and returns new array of data of matching id as what's clicked
   const movieDetails = props.reduxState.movies.filter((movieItem, index) => {
-    return movieItem.movies_id == props.match.params.id;
+    return movieItem.id == props.match.params.id;
 
   })
 
