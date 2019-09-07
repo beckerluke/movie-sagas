@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 function DetailsPage(props) {
   // Renders the description and genres for specific movie selected
-  console.log(props)
+  console.log(props);
 
   // Filters array of movie data objects and returns new array of data of matching id as what's clicked
   const movieDetails = props.reduxState.movies.filter((movieItem, index) => {
@@ -21,14 +21,12 @@ function DetailsPage(props) {
   })
     console.log(movieDetails);
     console.log(movieGenresArray);
-  
-    
     
     return (
       <div>
         <h2>Movie Details</h2>
-       <Button>Back To List</Button>
-       <Button>Edit</Button>
+       <Button onClick={(event) => {props.history.push('/')}}>Back To List</Button>
+       <Button onClick={(event) => {props.history.push('/edit')}}>Edit</Button>
        <h3>{movieDetails[0].title}</h3>
        <p>{movieDetails[0].description}</p>
        {movieGenresArray}
