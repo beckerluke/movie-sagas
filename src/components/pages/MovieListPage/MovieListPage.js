@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import '../../App/App.css';
 import mapStateToProps from '../../modules/mapStateToProps';
 import Grid from '@material-ui/core/Grid'
+import {withRouter} from 'react-router-dom';
+import MovieItem from '../MovieItem/MovieItem';
 
 class MovieListPage extends Component {
   // Renders the entire list of movies and posters from Database
@@ -10,30 +12,41 @@ class MovieListPage extends Component {
   componentDidMount() {
     this.props.dispatch({type: 'GET_MOVIES'});
   }
+
   render() {
     console.log(this.props.reduxState.movies);
     // array of movie objects from database in movies reducer
+    // const movieListArray = this.props.reduxState.movies.map((movieItem, index) => {
+    //   return (
+    //     <div key={index}>
+    //     <h2>{movieItem.title}</h2>
+    //       <div>
+    //         <img onClick={this.posterClick} src={movieItem.poster}/>
+    //         <p>{movieItem.description}</p>
+    //       </div>
+    //     </div>
+    //   )
+    // });
+
+    // array of movie objects from database in movie reducer
     const movieListArray = this.props.reduxState.movies.map((movieItem, index) => {
       return (
-        <div key={index}>
-        <h2>{movieItem.title}</h2>
-          <div>
-            <img src={movieItem.poster}/>
-            <p>{movieItem.description}</p>
-          </div>
-        </div>
-      )
-    });
+      <Grid key={index} item>
+        <MovieItem movieItem={movieItem}></MovieItem>
+      </Grid>
+      )});
 
     return (
       <div className="App">
         <h1>Movie List Page</h1>
        <div>
-       {movieListArray}
+         <Grid container spacing={8}>
+            {movieListArray}
+        </Grid>
        </div>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(MovieListPage);
+export default connect(mapStateToProps)(withRouter(MovieListPage));
