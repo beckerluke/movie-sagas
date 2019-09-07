@@ -3,13 +3,15 @@ import {connect} from 'react-redux';
 import '../../App/App.css';
 import {withRouter} from 'react-router-dom'
 import mapStateToProps from '../../modules/mapStateToProps';
+import DetailsPage from '../DetailsPage/DetailsPage';
 
 class MovieItem extends Component {
   
+  // click event to take user to the details page 
   posterClick = (event) => {
-    console.log(this.props.reduxState);
-    // click event to take user to the details page 
-    this.props.history.push('/details');
+    console.log(this.props.movieItem);
+    
+    this.props.history.push('/details/'+this.props.movieItem.id);
   }
   
   render() {
