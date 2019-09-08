@@ -5,19 +5,25 @@ import {TextField, Button} from '@material-ui/core/';
 class EditPage extends Component {
   // Renders input field and textarea for user to edit the title and description for specific movie selected
   state = {
+    editMovie: {
       title: '', 
       description: ''
+    }
   }
 
   handleChange = (event, dataKey) => {
     // capture user input for both movie title and movie description
     const fieldValue = event.target.value;
     console.log(fieldValue);
-
+    // set local state to user most up-to-date user input
     this.setState({
-      ...this.state,
-      [dataKey]: fieldValue
+      editMovie: {
+        ...this.state.editMovie,
+        [dataKey]: fieldValue
+      }
     })
+    console.log(this.state.editMovie);
+    
   }
 
   // handleClickSave = (event) => {
@@ -36,7 +42,7 @@ class EditPage extends Component {
           placeholder="Movie Title"
           variant="outlined"
           />
-       <br/>
+          <br/>
           <TextField onChange={(event) => {this.handleChange(event, 'description')}} 
           className="Edit-description-field"
           rows={3} margin="normal" 
