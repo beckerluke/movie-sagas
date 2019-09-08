@@ -10,15 +10,16 @@ function DetailsPage(props) {
   console.log(props);
 
   // Filters array of movie data objects and returns new array of data of matching id as what's clicked
-  const movieDetails = props.reduxState.movies.filter((movieItem, index) => {
-    return movieItem.id == props.match.params.id;
+  const movieDetails = props.reduxState.genres.filter((movieItem, index) => {
+    return movieItem.movies_id == props.match.params.id;
 
   })
 
   // Gives you array of different genres associated with movie selected
-  const movieGenresArray = movieDetails.map((movieItem, index) => {
-    return <p key={index}>{movieItem.name}</p>;
+  const movieGenresArray = movieDetails.map((genreItem, index) => {
+    return <p key={index}>{genreItem.name}</p>
   })
+
     console.log(movieDetails);
     console.log(movieGenresArray);
     
