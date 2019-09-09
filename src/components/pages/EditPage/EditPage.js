@@ -18,7 +18,7 @@ class EditPage extends Component {
   handleChange = (event, dataKey) => {
     // capture user input for both movie title and movie description
     const fieldValue = event.target.value;
-    console.log(fieldValue);
+    
     // set local state to user most up-to-date user input
     this.setState({
       editMovie: {
@@ -34,8 +34,7 @@ class EditPage extends Component {
   }
 
   render() {
-    console.log(this.props);
-    
+
     return (
       <div className="App">
         <h2>Edit Movie</h2>

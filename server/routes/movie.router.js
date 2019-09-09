@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 
     pool.query(queryText)
         .then((result) => {
-            console.log('GET from DB ', result.rows);
             // sends database information back to client in array
             res.send(result.rows)
         })
@@ -37,7 +36,6 @@ router.get('/genres', (req, res) => {
 
     pool.query(queryText)
         .then((result) => {
-            console.log('GET from DB ', result.rows);
             // sends database information back to client in array
             res.send(result.rows)
         })
@@ -57,7 +55,6 @@ router.put('/edit/:id', (req, res) => {
 
     pool.query(queryText, [newData.title, newData.description, movieId])
         .then((result) => {
-            console.log('PUT for DB ', result);
             res.sendStatus(200)
         })
         .catch((err) => {

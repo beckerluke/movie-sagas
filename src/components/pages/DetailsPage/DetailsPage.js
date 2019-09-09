@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 
 function DetailsPage(props) {
   // Renders the description and genres for specific movie selected
-  console.log(props);
 
   // Filters array of movie data objects and returns new array of data of matching id as what's clicked
   const movieDetails = props.reduxState.genres.filter((movieItem, index) => {
@@ -19,10 +18,6 @@ function DetailsPage(props) {
   const movieGenresArray = movieDetails.map((genreItem, index) => {
     return <p key={index}>{genreItem.name}</p>
   })
-
-    console.log(movieDetails);
-    console.log(movieGenresArray);
-    
     return (
       <div>
         <h2>Movie Details</h2>

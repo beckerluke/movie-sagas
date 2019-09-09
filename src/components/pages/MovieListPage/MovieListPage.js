@@ -16,22 +16,7 @@ class MovieListPage extends Component {
   }
 
   render() {
-    console.log(this.props.reduxState.movies);
-    console.log(this.props.reduxState.genres);
     
-    // array of movie objects from database in movies reducer
-    // const movieListArray = this.props.reduxState.movies.map((movieItem, index) => {
-    //   return (
-    //     <div key={index}>
-    //     <h2>{movieItem.title}</h2>
-    //       <div>
-    //         <img onClick={this.posterClick} src={movieItem.poster}/>
-    //         <p>{movieItem.description}</p>
-    //       </div>
-    //     </div>
-    //   )
-    // });
-
     // array of movie objects from database in movie reducer
     const movieListArray = this.props.reduxState.movies.map((movieItem, index) => {
       return (
