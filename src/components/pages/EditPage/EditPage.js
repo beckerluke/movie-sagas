@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import '../../App/App.css';
 import {TextField, Button} from '@material-ui/core/'; 
+import mapStateToProps from '../../modules/mapStateToProps';
+import {withRouter} from 'react-router-dom';
 
 class EditPage extends Component {
   // Renders input field and textarea for user to edit the title and description for specific movie selected
   state = {
     editMovie: {
+      id: this.props.match.params.id,
       title: '', 
       description: ''
     }
@@ -24,9 +28,10 @@ class EditPage extends Component {
     })
   }
 
-  // handleClickSave = (event) => {
-  //   this.props.dispatch('UPDATE_MOVIES')
-  // }
+  handleClickSave = (event) => {
+    this.props.dispatch({type: 'UPDATE_MOVIES', payload: this.state.editMovie});
+    this.props.history.push('/details/'+this.props.match.params.id);
+  }
 
   render() {
     console.log(this.props);
@@ -55,4 +60,4 @@ class EditPage extends Component {
   }
 }
 
-export default EditPage;
+export default connect(mapStateToProps)(withRouter(EditPage));

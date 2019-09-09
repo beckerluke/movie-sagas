@@ -36,10 +36,23 @@ function* getGenres() {
     }
 }
 
+// Saga to update (PUT) movies
+function* updateMovies(action) {
+    try {
+        yield axios.put('/movie/edit/'+action.payload.id, action.payload);
+        yield put({type: 'GET_MOVIES'});
+    }
+    catch(err) {
+        console.log('Error in PUT', err);
+        
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
     yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('UPDATE_MOVIES', updateMovies);
 }
 
 // Create sagaMiddleware
