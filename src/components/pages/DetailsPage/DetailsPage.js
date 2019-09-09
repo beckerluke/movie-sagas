@@ -27,9 +27,10 @@ function DetailsPage(props) {
       <div>
         <h2>Movie Details</h2>
        <Button onClick={(event) => {props.history.push('/')}}>Back To List</Button>
-       <Button onClick={(event) => {props.history.push('/edit')}}>Edit</Button>
+       <Button onClick={(event) => {props.history.push('/edit/'+props.match.params.id)}}>Edit</Button>
        <h3>{movieDetails[0].title}</h3>
        <p>{movieDetails[0].description}</p>
+       <h4>Genres</h4>
        {movieGenresArray}
 
       </div>

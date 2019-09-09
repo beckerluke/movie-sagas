@@ -29,12 +29,7 @@ router.get('/', (req, res) => {
 
 router.get('/genres', (req, res) => {
     
-    // query database to join movies and genres tables
-    // WILL NEED THIS LATER! 
-    // const queryText = `SELECT * FROM "movies"
-    //     JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
-    //     JOIN "genres" ON "movies_genres".genres_id = "genres".id
-    //     ORDER BY "movies".title ASC;`;
+
     const queryText = `SELECT * FROM "movies"
            JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
            JOIN "genres" ON "movies_genres".genres_id = "genres".id
@@ -51,4 +46,23 @@ router.get('/genres', (req, res) => {
             res.sendStatus(500);
         });
 }); // End of GET 
+
+// PUT route to pull 
+router.put('/edit/:id', (req, res) => {
+    const movieId = req.params.id;
+    const newData = req.body;
+    const queryText = `UPDATE "movies"
+           SET "title" = $1, "description" = $2
+           WHERE "id" = $3;`;
+
+    pool.query(queryText, [newData.title, newData.description, movieId])
+        .then((result) => {
+            console.log('PUT for DB ', result);
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log('ERROR completing movie query ', err);
+            res.sendStatus(500);
+        });
+});
 module.exports = router;

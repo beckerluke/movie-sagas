@@ -22,8 +22,6 @@ class EditPage extends Component {
         [dataKey]: fieldValue
       }
     })
-    console.log(this.state.editMovie);
-    
   }
 
   // handleClickSave = (event) => {
@@ -51,7 +49,7 @@ class EditPage extends Component {
           />
           <br/>
           <Button onClick={this.handleClickSave}>Save</Button>
-          <Button onClick={(event) => {this.props.history.push('/details/:id')}}>Cancel</Button>
+          <Button onClick={(event) => {this.props.history.push('/details/'+this.props.match.params.id)}}>Cancel</Button>
       </div>
     );
   }
